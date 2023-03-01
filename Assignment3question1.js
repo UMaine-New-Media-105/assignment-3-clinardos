@@ -12,8 +12,8 @@ function draw() {
   // This is for the table the coffee cup is seated on
   rect(0, 330, 400, 70);
   
-  // This is calling the "Coffee Cup" function so it will appear within sketch.
-  addCoffeeCup(150, 230, 2.5);
+  // This is calling the "Coffee Cup" function so it will appear within sketch. This also enables the coffee cup to follow the mouse by using the "mouseX" variable. 
+  addCoffeeCup(mouseX, 230, 2.5);
 }
 
 //This is the function for the complete coffee cup
