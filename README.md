@@ -48,3 +48,10 @@ function addCoffeeBean (x,y,size) {
   <li>beanSpeedY</li>
 </ul>
 <br> When I called these variables in the set up function I set <strong>beanY</strong> and <strong>beanSpeedY</strong> to zero so that the coffee bean would not move along the Y axis. Next I gave a random variable to <strong>beanX</strong> between 1 and 400. Also, I gave a random variable to <strong>beanSpeedX</strong> which was between 1 and 5. 
+
+
+## assignment-3-question-4
+### [Link] (https://editor.p5js.org/clinardos/sketches/wpoDifwNF)
+<p> To start challenge 4, I first duplicated my previous sketch. This means I would still be working with the p5.js software and a 400 by 400 canvas. The task of challenge 4 was to rewrite the already made code of the "seed" so that it is by the user clicking the canvas. Then write a test to see if the seed has hit the ground. If it has, have the "seed" reset and fall again. The next seed should not drop until the previous one is done falling. 
+ 
+ <p> To start this assignment, I had to clear up my code as it was bothering my OCD so for each function I created their own file. Next I edited my code to drop the seed when the mouse was pressed. This is where I got stuck. I couldn't figure out how to allow the seed to continue to fall even when the mouse was no longer being pressed. I also added in a logo I made as the background. I will update this with the solution when I figure it out, and ask for help. 
