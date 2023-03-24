@@ -51,7 +51,37 @@ function addCoffeeBean (x,y,size) {
 
 
 ## assignment-3-question-4
-### [Link] (https://editor.p5js.org/clinardos/sketches/wpoDifwNF)
+### [Link](https://editor.p5js.org/clinardos/sketches/wpoDifwNF)
 <p> To start challenge 4, I first duplicated my previous sketch. This means I would still be working with the p5.js software and a 400 by 400 canvas. The task of challenge 4 was to rewrite the already made code of the "seed" so that it is by the user clicking the canvas. Then write a test to see if the seed has hit the ground. If it has, have the "seed" reset and fall again. The next seed should not drop until the previous one is done falling. 
  
  <p> To start this assignment, I had to clear up my code as it was bothering my OCD so for each function I created their own file. Next I edited my code to drop the seed when the mouse was pressed. This is where I got stuck. I couldn't figure out how to allow the seed to continue to fall even when the mouse was no longer being pressed. I also added in a logo I made as the background. I will update this with the solution when I figure it out, and ask for help. 
+
+  ## assignment-3-question-5
+### [Link](https://editor.p5js.org/clinardos/full/wpoDifwNF)
+<p> Unfortunately for this portion of the assignment I forgot to duplicate the sketch which would have made a different sketch for question 5. The main task of this part of the assignment was to add a change or animation to the "catcher" when it caught the "seed".
+<p> I feel like I changed a lot within this portion of the assignment. I added in a picture as the background first. I did this by creating seperate files. I created one that held the picture, and then also another file that would hold the whole background. Next, I changed the "seedfalling" back to randomized from being a mouseIsPressed option because I could never fully get the function to work.
+
+<p> I continued by making a few final touches. I added a point counter by using the following code: 
+ 
+``` Javascript 
+  push();
+  stroke("blue");
+  strokeWeight(5);
+  textSize(32);
+  text(points, 350, 40);
+  pop();
+    if (coffeeLidOpen == true && d <= 50) {
+    beanIsCaught = true;
+    points = points +2 } 
+  ```                                    
+  
+<p> Next, I allowed for the Coffee Cup which has a sad face on it to change to a smileyface. The catch is the player must have the lid open (mouseIsPressed) and also catch a coffee bean. Once they have caught their first coffee bean the smiley face will show the rest of the game when the lid is open. This is the code I used to accomplish this: 
+ 
+  ```Javascript 
+    push();
+  if (mouseIsPressed == true && beanIsCaught == true) {
+    addSmileyFace(15,23,0.09);
+  } else (
+  addSadFace(15, 23, 0.09));
+  pop();
+  ```
