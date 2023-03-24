@@ -1,8 +1,17 @@
 // Linardos, Caitlin
 // Assignment 3 -- Question 4/5
 
-// The goal of this game is to catch 95 espresso beans. If each esspresso bean represents 1 mg of caffiene. When you reach the goal of 95, you will have enough for a cup of coffee!
-// To place this game you must, press the mouse in to open the cup and collect the beans.
+// I accidentally forgot to duplicate the sketch when I started for part 5. 
+
+// The goal of this game is to catch about 48 espresso beans. If each esspresso bean represents 2 mg of caffiene. When you reach the goal of 95mg, you will have enough for a cup of coffee!
+
+// To play this game you must, press the mouse in to open the cup and collect the beans.
+
+// When you collect the first bean with the coffee lid open, you'll notice a smiley face that will continue while you play the game. 
+
+// Though when you close the lid, the sad face comes back!
+
+
 
 // Defining variables
 let logo;
@@ -13,6 +22,7 @@ let beanDiameter;
 let beanIsFalling;
 let beanIsCaught;
 let points = 0;
+let coffeeLidOpen;
 
 function setup() {
   createCanvas(400, 400);
@@ -27,6 +37,7 @@ function setup() {
   logo = loadImage("coffeeShopLogo.png");
   beanIsFalling = false;
   beanIsCaught = false;
+  coffeeLidOpen = false
 }
 
 function draw() {
@@ -41,38 +52,44 @@ function draw() {
   text(points, 350, 40);
   pop();
 
-  // Making beans fall 
+  // Making beans fall
   push();
   beanX = beanX + beanSpeedX;
 
   beanY = beanY + beanSpeedY;
 
   addCoffeeBean(beanX, beanY, 0.8);
+  pop();
 
-  // This allows the bean to restet 
+  // This allows the bean to reset
+  push();
   if (beanY >= height - 130) {
     beanIsFalling = false;
     beanY = 0;
     beanX = random(380);
   }
+  pop();
+  addCoffeeCup(mouseX - 50, 220, 2.7);
   
   // This lets you gain points when the beads are caught
+  push();
   let d = dist(mouseX, 290, beanX, beanY);
 
-  if (d <= 50) {
-    beanCaught = true;
-    points = points + 1;
-  }
-  // This is the "YOUVE WON" moment 
+  if (coffeeLidOpen == true && d <= 50) {
+    beanIsCaught = true;
+    points = points +2
+  } 
+  
+// This shows a message congratulating winner. 
+  pop();
+  push();
   if (points == 95) {
-    textSize (40)
-     fill ("rgb(255,10,205)")
-    text ("You're Caffienated!", 20,80)
-    noLoop ()
+    textSize(40);
+    fill("rgb(255,10,205)");
+    text("You're Caffienated!", 20, 80);
+    noLoop();
   }
   pop();
-
-  addCoffeeCup(mouseX - 50, 220, 2.7);
 }
 //This is the function for the complete coffee cup
 function addCoffeeCup(x, y, size) {
@@ -104,26 +121,17 @@ function addCoffeeCup(x, y, size) {
   pop();
 
   // This is the if else statement that causes the coffee cup to flip open.
-  push();
-  if (mouseIsPressed) {
-    addCoffeeLid(1.5, 30, -120);
-  } else {
-    stroke("steelblue");
-    strokeWeight(0.3);
-    rect(9, 12, 22, 3);
-    rect(10, 10, 20, 2);
-    pop();
-  }
+
+  mousePressed();
 
   //This is the face in the middle of the cup's banner
   push();
-  if (mouseIsPressed) {
-    addSmileyFace(15, 23, 0.09);
-  } else {
-    addSadFace(15, 23, 0.09);
-    pop();
-    pop();
-  }
+  if (mouseIsPressed == true && beanIsCaught == true) {
+    addSmileyFace(15,23,0.09);
+  } else (
+  addSadFace(15, 23, 0.09));
+  pop();
+  pop();
 }
 
 // I created this in lab previously and altered it for this sketch.
@@ -227,3 +235,21 @@ function addCoffeeBean(x, y, size) {
 
   pop();
 }
+
+// This is the function that opens the lid
+function mousePressed(openlid) {
+  push();
+  if (mouseIsPressed) {
+    addCoffeeLid(1.5, 30, -120);
+    coffeeLidOpen = true;
+  } else {
+    stroke("steelblue");
+    strokeWeight(0.3);
+    rect(9, 12, 22, 3);
+    rect(10, 10, 20, 2);
+    coffeeLidOpen = false
+    pop();
+    
+}
+}
+
