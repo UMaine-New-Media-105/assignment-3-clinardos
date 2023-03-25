@@ -7,11 +7,9 @@
 
 // To play this game you must, press the mouse in to open the cup and collect the beans.
 
-// When you collect the first bean with the coffee lid open, you'll notice a smiley face that will continue while you play the game. 
+// When you collect the first bean with the coffee lid open, you'll notice a smiley face that will continue while you play the game.
 
 // Though when you close the lid, the sad face comes back!
-
-
 
 // Defining variables
 let logo;
@@ -37,7 +35,7 @@ function setup() {
   logo = loadImage("coffeeShopLogo.png");
   beanIsFalling = false;
   beanIsCaught = false;
-  coffeeLidOpen = false
+  coffeeLidOpen = false;
 }
 
 function draw() {
@@ -61,27 +59,28 @@ function draw() {
     beanX = random(380);
   }
   pop();
+  push();
   addCoffeeCup(mouseX - 50, 220, 2.7);
-  
+  pop();
+
   // This lets you gain points when the beads are caught
-    push()
+  push();
   let d = dist(mouseX, 290, beanX, beanY);
   if (coffeeLidOpen == true && d <= 50) {
     beanIsCaught = true;
-    score = score +1
-    pop()
-  } 
-  
-// This shows a message congratulating winner. 
-  push()
-  if (score == 95) {
-    textSize(15);
-    fill("rgb(255,10,205)");
-    text("You're Caffienated!",-51, -60, 150, 80);
-    noLoop();
-   pop()
+    score=score+1;
+    pop();
   }
- 
+
+  // This shows a message congratulating winner.
+  push();
+  if (score == 95) {
+    textSize(40);
+    fill("rgb(255,10,205)");
+    text("You're Caffienated!", 40, 100);
+    noLoop();
+    pop();
+  }
 }
 //This is the function for the complete coffee cup
 function addCoffeeCup(x, y, size) {
@@ -119,9 +118,8 @@ function addCoffeeCup(x, y, size) {
   //This is the face in the middle of the cup's banner
   push();
   if (mouseIsPressed == true && beanIsCaught == true) {
-    addSmileyFace(15,23,0.09);
-  } else (
-  addSadFace(15, 23, 0.09));
+    addSmileyFace(15, 23, 0.09);
+  } else addSadFace(15, 23, 0.09);
   pop();
   pop();
 }
@@ -239,8 +237,8 @@ function mousePressed(openlid) {
     strokeWeight(0.3);
     rect(9, 12, 22, 3);
     rect(10, 10, 20, 2);
-    coffeeLidOpen = false
+    coffeeLidOpen = false;
     pop();
-    
-}
+  }
+
 }
