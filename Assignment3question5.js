@@ -21,7 +21,7 @@ let beanSpeedX;
 let beanDiameter;
 let beanIsFalling;
 let beanIsCaught;
-let points = 0;
+let score = 0;
 let coffeeLidOpen;
 
 function setup() {
@@ -33,7 +33,7 @@ function setup() {
   beanY = 0;
   beanDiameter = 1;
   beanSpeedX = 0;
-  beanSpeedY = random(1, 10);
+  beanSpeedY = random(1, 8);
   logo = loadImage("coffeeShopLogo.png");
   beanIsFalling = false;
   beanIsCaught = false;
@@ -43,14 +43,6 @@ function setup() {
 function draw() {
   // This is the background which is a seperate file
   coffeeShopBackground();
-
-  // Point counter
-  push();
-  stroke("blue");
-  strokeWeight(5);
-  textSize(32);
-  text(points, 350, 40);
-  pop();
 
   // Making beans fall
   push();
@@ -72,24 +64,24 @@ function draw() {
   addCoffeeCup(mouseX - 50, 220, 2.7);
   
   // This lets you gain points when the beads are caught
-  push();
+    push()
   let d = dist(mouseX, 290, beanX, beanY);
-
   if (coffeeLidOpen == true && d <= 50) {
     beanIsCaught = true;
-    points = points +2
+    score = score +2
+    pop()
   } 
   
 // This shows a message congratulating winner. 
-  pop();
-  push();
-  if (points == 95) {
-    textSize(40);
+  push()
+  if (score == 2) {
+    textSize(15);
     fill("rgb(255,10,205)");
-    text("You're Caffienated!", 20, 80);
+    text("You're Caffienated!",-50.1, -60, 150, 80);
     noLoop();
+   pop()
   }
-  pop();
+ 
 }
 //This is the function for the complete coffee cup
 function addCoffeeCup(x, y, size) {
@@ -252,4 +244,3 @@ function mousePressed(openlid) {
     
 }
 }
-
