@@ -68,16 +68,16 @@ function draw() {
   let d = dist(mouseX, 290, beanX, beanY);
   if (coffeeLidOpen == true && d <= 50) {
     beanIsCaught = true;
-    score = score +2
+    score = score +1
     pop()
   } 
   
 // This shows a message congratulating winner. 
   push()
-  if (score == 2) {
+  if (score == 95) {
     textSize(15);
     fill("rgb(255,10,205)");
-    text("You're Caffienated!",-50.1, -60, 150, 80);
+    text("You're Caffienated!",-51, -60, 150, 80);
     noLoop();
    pop()
   }
